@@ -8,6 +8,8 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import path from "path";
 
+const PORT = process.env.PORT || 5000;
+
 import router from "./router";
 
 const app = express();
@@ -33,8 +35,8 @@ app.get("*", (req, res) => {
 
 const server = http.createServer(app);
 
-server.listen(8080, () => {
-  console.log("Server running on http://localhost:8080");
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 const MONGO_URI = process.env.MONGO_URI!;
