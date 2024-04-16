@@ -1,0 +1,16 @@
+.register {
+  height: 100vh !important;
+  /* i want linear gradient with image behind it */
+  background: linear-gradient(0deg, rgba(7, 26, 70, 0.8), rgba(3, 9, 31, 0.8)),
+    url("../../public/bg-img.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none !important;
+}
