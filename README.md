@@ -4,6 +4,15 @@ Invoicefy is a simple invoice generator that allows you to create and download i
 
 ![Portfolio Preview](./client/public/Thumbnail.svg)
 
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [License](#license)
+- [Author](#author)
+- [Contribution](#contribution)
+
 ## Features
 
 - Create and download invoices in PDF format.
