@@ -5,6 +5,7 @@ import {
   getUserById,
   deleteUser,
   updateUser,
+  updateUserCompanyInfo,
   getUserInfo,
   getUserBSessionToken,
   updateUserProfile,
@@ -17,6 +18,12 @@ export default (router: express.Router) => {
   router.get("/users/:id", isAuthenticated, isOwner, getUserById);
   router.delete("/users/:id", isAuthenticated, isOwner, deleteUser);
   // router.patch("/users/:id", isAuthenticated, isOwner, updateUser);
+  router.patch(
+    "/update-user-company-info",
+    // isAuthenticated,
+    // isOwner,
+    updateUserCompanyInfo
+  );
   router.post("/get-user-info", getUserInfo);
   router.post("/get-user-by-session-token", getUserBSessionToken);
 

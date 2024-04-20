@@ -31,6 +31,23 @@ const UserSchema = new mongoose.Schema({
     default:
       "https://qph.cf2.quoracdn.net/main-qimg-2b21b9dd05c757fe30231fac65b504dd",
   },
+  companyName: {
+    type: String,
+    default: "Company Name",
+  },
+  companyLogo: {
+    type: String,
+    default:
+      "https://logowik.com/content/uploads/images/farm-and-nature6046.logowik.com.webp",
+  },
+  companyAddress: {
+    type: String,
+    default: "Address",
+  },
+  companyPhone: {
+    type: String,
+    default: "Phone Number",
+  },
 });
 
 // remove all invoices related to the user if that user is deleted

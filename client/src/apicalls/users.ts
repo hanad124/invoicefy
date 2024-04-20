@@ -1,5 +1,6 @@
 import { axiosInstance } from ".";
 
+// get all users
 export const getUsers = async () => {
   try {
     const response = await axiosInstance.get("/users");
@@ -11,6 +12,7 @@ export const getUsers = async () => {
   }
 };
 
+// get user by id
 export const getUser = async (id: string) => {
   try {
     const response = await axiosInstance.get(`/users/${id}`);
@@ -22,6 +24,7 @@ export const getUser = async (id: string) => {
   }
 };
 
+// get user info
 export const getUserInfo = async (payload: any) => {
   try {
     const response = await axiosInstance.post("/get-user-info", payload);
@@ -33,6 +36,7 @@ export const getUserInfo = async (payload: any) => {
   }
 };
 
+// get user by session token
 export const getUserBySessionToken = async (payload: any) => {
   try {
     const response = await axiosInstance.post(
@@ -47,9 +51,26 @@ export const getUserBySessionToken = async (payload: any) => {
   }
 };
 
+// update user profile
 export const updateUserProfile = async (payload: any) => {
   try {
     const response = await axiosInstance.put("/update-user-profile", payload);
+
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    return error.response.data;
+  }
+};
+
+// udpate user company info
+export const updateUserCompanyInfo = async (payload: any) => {
+  console.log(payload);
+  try {
+    const response = await axiosInstance.patch(
+      "/update-user-company-info",
+      payload
+    );
 
     return response.data;
   } catch (error: any) {

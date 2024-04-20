@@ -6,6 +6,7 @@ import {
   getUsers,
 } from "../actions/user.actions";
 
+// get all users
 export const getAllUsers = async (
   req: express.Request,
   res: express.Response
@@ -20,6 +21,7 @@ export const getAllUsers = async (
   }
 };
 
+// get user by id
 export const getUserById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -51,6 +53,7 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
+// get user info
 export const getUserInfo = async (req: Request, res: Response) => {
   try {
     const { token } = req.body;
@@ -111,6 +114,7 @@ export const getUserBSessionToken = async (req: Request, res: Response) => {
   }
 };
 
+// delete user
 export const deleteUser = async (
   req: express.Request,
   res: express.Response
@@ -126,6 +130,7 @@ export const deleteUser = async (
   }
 };
 
+// update user
 export const updateUser = async (
   req: express.Request,
   res: express.Response
@@ -194,6 +199,52 @@ export const updateUserProfile = async (req: Request, res: Response) => {
     return res.status(200).json({
       success: true,
       message: "User updated successfully.",
+      data: updatedUser,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+};
+
+// update user company info
+export const updateUserCompanyInfo = async (req: Request, res: Response) => {
+  try {
+    const { companyName, companyLogo, companyAddress } = req.body;
+    const { _id } = req.body;
+
+    if (!companyName || !companyLogo || !companyAddress) {
+      console.log("Company Name, Logo or Address is missing");
+      return res.sendStatus(400);
+    }
+
+    const user = await UserModel.findById({
+      _id: _id,
+    });
+
+    if (!user) {
+      console.log("User not found");
+      return res.sendStatus(404);
+    }
+
+    // update only if tha value changed or different from the previous one
+    if (companyName !== user.companyName) {
+      user.companyName = companyName;
+    }
+
+    if (companyLogo !== user.companyLogo) {
+      user.companyLogo = companyLogo;
+    }
+
+    if (companyAddress !== user.companyAddress) {
+      user.companyAddress = companyAddress;
+    }
+
+    const updatedUser = await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "User company info updated successfully.",
       data: updatedUser,
     });
   } catch (error) {

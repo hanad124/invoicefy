@@ -1,5 +1,11 @@
+import SettingsComp from "../components/settings/SettingsComp";
+
 const Settings = () => {
-  return <div>Settings</div>;
+  return (
+    <div>
+      <SettingsComp />
+    </div>
+  );
 };
 
 export default Settings;

@@ -88,7 +88,17 @@ const AvatorComponent = () => {
                   }}
                   className="flex cursor-pointer items-center text-slate-600 dark:text-slate-400 gap-1"
                 >
-                  <BiUserCircle className="w-8 h-8 text-slate-500 " />
+                  {/* <BiUserCircle className="w-8 h-8 text-slate-500 " /> */}
+                  <div className=" border-slate-400 border-[1px] dark:border-slate-600 dark:border-[1px] w-[2.4rem] h-[2.4rem]  rounded-full p-[1.4px]">
+                    <img
+                      src={
+                        avatar
+                          ? avatar
+                          : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                      }
+                      alt="avatar"
+                    />
+                  </div>
                   <div className="flex flex-col gap-1">
                     <span className=" ">{user && user?.username}</span>
                     <span className="text-xs">{user && user?.email}</span>

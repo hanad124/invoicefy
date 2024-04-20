@@ -116,11 +116,12 @@ const Profile = () => {
 
           if (!openUserProfileModal) {
             reset();
-            setFile(
-              new File([""], "filename", {
-                type: "image/png",
-              })
-            );
+            setFile(null);
+            // setFile(
+            //   new File([""], "filename", {
+            //     type: "image/png",
+            //   })
+            // );
           }
         }}
       >
