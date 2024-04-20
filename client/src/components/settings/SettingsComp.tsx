@@ -179,7 +179,7 @@ const SettingsComp = () => {
             />
           </div>
 
-          <div className="col-span-12">
+          <div className="col-span-12 mt-4">
             <button
               type="submit"
               disabled={loading}
