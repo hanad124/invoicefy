@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
 import "../resources/default-layout.css";
 import { useNavigate } from "react-router-dom";
-import { useSessionToken } from "../store/invoice";
+import { useUserInfo } from "../store/invoice";
 
 import { message } from "antd";
 import { FiLogOut, FiHome, FiFileText, FiSettings } from "react-icons/fi";
-
-// import { useTheme } from "next-themes";
 
 const Sidebar = () => {
   //   const { setTheme } = useTheme();
   const navigate = useNavigate();
   const [activePath, setActivePath] = useState(window.location.pathname);
-  const { sessionToken } = useSessionToken();
+  const { user } = useUserInfo();
 
   useEffect(() => {
     const handlePathChange = () => {
@@ -54,7 +52,7 @@ const Sidebar = () => {
         <div className="flex flex-col gap-y-4 relativeh-full">
           <div className="flex items-center justify-center gap-2 py-4 mt-2">
             <img
-              src={sessionToken?.companyLogo}
+              src={user?.companyLogo}
               alt="logo"
               className="w-7 h-7 cursor-pointer -mt-1"
               onClick={() => {
@@ -67,7 +65,7 @@ const Sidebar = () => {
                 navigate("/dashboard");
               }}
             >
-              {sessionToken?.companyName}
+              {user?.companyName}
             </span>
           </div>
           <div className="flex flex-col gap-y-2 mt-2">

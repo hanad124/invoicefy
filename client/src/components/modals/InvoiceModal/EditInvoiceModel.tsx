@@ -66,7 +66,9 @@ const EditInvoiceModel = () => {
       const quantity = watch(`items[${index}].quantity`);
       const price = watch(`items[${index}].price`);
 
-      total += quantity * price;
+      if (quantity && price) {
+        total += quantity * price;
+      }
     });
     setTotal(total);
   };

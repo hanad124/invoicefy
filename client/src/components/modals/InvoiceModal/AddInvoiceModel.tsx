@@ -58,16 +58,24 @@ const AddInvoiceModel = () => {
     });
   };
 
-  useEffect(() => {
-    let total = 0;
-    fields.forEach((index) => {
-      const quantity = watch(`items[${index}].quantity`);
-      const price = watch(`items[${index}].price`);
+  const items = watch("items");
 
-      total += quantity * price;
-    });
-    setTotal(total);
-  }, [watch("items")]);
+  useEffect(() => {
+    let newTotal = 0;
+
+    if (items) {
+      items.forEach((item: any) => {
+        const quantity = item.quantity;
+        const price = item.price;
+
+        if (quantity && price) {
+          newTotal += quantity * price;
+        }
+      });
+    }
+
+    setTotal(newTotal);
+  }, [items, fields]);
 
   useEffect(() => {
     const getSessionToken = async () => {
@@ -84,10 +92,9 @@ const AddInvoiceModel = () => {
     if (data.items.length === 0) {
       toast.error("You need to add at least 1 item!");
     } else {
-      console.log(data);
       createInvoice({
         ...data,
-        total,
+        total: total,
         user: sessionToken._id,
       })
         .then(() => {

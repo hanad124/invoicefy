@@ -13,6 +13,9 @@ interface User {
   username: string;
   email: string;
   profilePicture: string;
+  companyAddress?: string;
+  companyLogo?: string;
+  companyName?: string;
 }
 
 // user info

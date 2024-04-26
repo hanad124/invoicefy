@@ -58,12 +58,15 @@ const DataTable = <TData, TValue>({
       <div className="rounded-md border overflow-hidden">
         {data && data.length > 0 ? (
           <Table className="">
-            <TableHeader className="bg-primary">
+            <TableHeader className="bg-[#f6f6f6]">
               {table?.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
                     return (
-                      <TableHead key={header.id} className="text-white">
+                      <TableHead
+                        key={header.id}
+                        className="text-black font-semibold"
+                      >
                         {header.isPlaceholder
                           ? null
                           : flexRender(

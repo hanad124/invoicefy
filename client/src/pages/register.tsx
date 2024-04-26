@@ -54,7 +54,7 @@ const Register = () => {
         data-aos=" bg-red-500 fade-down"
         className=" w-full flex justify-center"
       >
-        <div className="bg-white max-w-fit p-10 rounded-md">
+        <div className="bg-white custom-shadow max-w-fit p-10 rounded-md">
           <div data-aos="" className="">
             <p className="text-2xl md:text-xl text-center font-bold text-slate-700 tracking-widest uppercase px-3">
               create account

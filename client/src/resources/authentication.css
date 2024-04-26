@@ -1,8 +1,15 @@
 .register {
   height: 100vh !important;
   /* i want linear gradient with image behind it */
-  background: linear-gradient(0deg, rgba(7, 26, 70, 0.8), rgba(3, 9, 31, 0.8)),
-    url("../../public/bg-img.jpeg");
+  /* background: linear-gradient(0deg, rgba(7, 26, 70, 0.8), rgba(3, 9, 31, 0.8)),
+    url("../../public/bg-img.jpeg"); */
+  /* background-image: radial-gradient(
+    circle 915px at 10.5% 89.5%,
+    rgba(11, 90, 156, 1) 0%,
+    rgba(1, 31, 66, 1) 90%
+  ); */
+  background-color: white;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -13,4 +20,9 @@
 
 a {
   text-decoration: none !important;
+}
+
+.custom-shadow {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid rgba(142, 139, 139, 0.125);
 }

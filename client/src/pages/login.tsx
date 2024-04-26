@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../apicalls/auth";
 import { LuExternalLink } from "react-icons/lu";
 
+import "../resources/authentication.css";
+
 function Login() {
   const validateMessages = {
     required: "${label} is required!",
@@ -38,7 +40,7 @@ function Login() {
   return (
     <div className="md:p-5  " data-aos="fade-up">
       <div className=" w-full flex justify-center">
-        <div className="bg-white max-w-fit p-10 rounded-md">
+        <div className="bg-white custom-shadow  max-w-fit p-10 rounded-md">
           <div data-aos="" className="">
             {/* <h1 className="flex items-center text-center gap-2 "> */}
             {/* <HiOutlineCreditCard className="text-3xl text-slate-700" /> */}

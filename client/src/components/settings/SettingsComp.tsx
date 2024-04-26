@@ -12,7 +12,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const SettingsComp = () => {
   const [loading, setLoading] = useState(false);
-  const { sessionToken } = useSessionToken();
+  const { sessionToken, token } = useSessionToken();
   const { fetchData } = useInvoices();
   const { fetchUserInfo, user } = useUserInfo();
 
@@ -26,7 +26,6 @@ const SettingsComp = () => {
   const {
     register,
     handleSubmit,
-    setValue,
 
     formState: { errors, isLoading },
     reset,
