@@ -6,8 +6,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { FiLogOut } from "react-icons/fi";
-import { BiUserCircle, BiMailSend, BiLockAlt } from "react-icons/bi";
+import { FiLogOut, FiSettings } from "react-icons/fi";
+import { BiMailSend } from "react-icons/bi";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
@@ -109,16 +109,10 @@ const AvatorComponent = () => {
                   onClick={() => navigate("/updateEmail")}
                   className="flex gap-1 cursor-pointer items-center text-slate-600 dark:text-slate-400"
                 >
-                  <BiMailSend className="w-6 font-bold text-lg" />
-                  <span> Update Email</span>
+                  <FiSettings className="w-6 font-bold text-lg" />
+                  <span> Settings</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => navigate("/updatePassword")}
-                  className="flex gap-1 cursor-pointer items-center text-slate-600 dark:text-slate-400"
-                >
-                  <BiLockAlt className="w-6 font-bold text-lg" />
-                  <span>Edit Password</span>
-                </DropdownMenuItem>
+
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   onClick={() => {

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import "../resources/default-layout.css";
 import { useNavigate } from "react-router-dom";
-import { useSessionToken, useInvoices, useUserInfo } from "../store/invoice";
+import { useSessionToken } from "../store/invoice";
 
 import { message } from "antd";
 import { FiLogOut, FiHome, FiFileText, FiSettings } from "react-icons/fi";
-import logo from "../../public/logo.svg";
 
 // import { useTheme } from "next-themes";
 
