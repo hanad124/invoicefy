@@ -1,8 +1,10 @@
 import { Dialog, DialogContent } from "../../../ui/dialog";
-import { openViewInvoiceModal } from "../../../../store/invoice";
+import {
+  openViewInvoiceModal,
+  useSessionToken,
+} from "../../../../store/invoice";
 import { useEffect } from "react";
 import logo from "../../../../../public/logo.svg";
-import qrcode from "../../../../../public/qrcode.svg";
 import getShortId from "../../../../helpers/getShortId";
 import {
   useInvoices,
@@ -18,6 +20,7 @@ const ViewInvoiceModel = () => {
   const { id } = invoiceId();
   const { data, fetchInvoice } = useInvoiceById();
   const { fetchData } = useInvoices();
+  const { sessionToken } = useSessionToken();
 
   useEffect(() => {
     if (id) {
@@ -41,50 +44,52 @@ const ViewInvoiceModel = () => {
           }
         }}
       >
-        <DialogContent className="sm:max-w-fit md:min-w-[45rem] max-h-screen overflow-y-scroll">
-          <div className="flex items-center justify-between mt-6">
-            <div className="">
-              <div className="flex items-center gap-3">
-                <img src={logo} alt="logo" className="w-[3rem] h-[3rem]" />
-                <h1 className="text-3xl font-bold text-primary tracking-wider">
-                  InvoiceFy
-                </h1>
+        <DialogContent className="sm:max-w-fit md:min-w-[50rem] max-h-screen overflow-y-scroll border-none outline-none">
+          <div className="mt-6">
+            <div className="flex justify-between pb-8 border-b">
+              <div className="">
+                {data ? (
+                  <div className="flex flex-col gap-y-2">
+                    <div className="flex items-center gap-3">
+                      <span className="font-bold">Bill To:</span>
+                      <h1 className="text-left capitalize">
+                        {data.clientName}
+                      </h1>
+                    </div>{" "}
+                    <div className="flex items-center gap-3">
+                      <span className="font-bold">Invoice Number:</span>
+                      <h1 className="uppercase">
+                        #{getShortId(data?._id! || "00000000")}
+                      </h1>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="font-bold">Invoice Date:</span>
+                      <h1 className="">
+                        {data.invoiceDate?.toString().slice(0, 10)}
+                      </h1>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <Skeleton className="w-40 h-8 mt-10" />
+                  </>
+                )}
               </div>
-              <div className="flex items-center gap-4 mt-4">
-                <img src={qrcode} alt="qrcode" className="w-[6rem] h-[6rem] " />
-                <div className=" py-4 rounded h-fit px-4">
-                  <StatusBadge />
+              <div className="">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={sessionToken?.companyLogo}
+                    alt="logo"
+                    className="w-[3rem] h-[3rem]"
+                  />
+                  <h1 className="text-3xl font-bold text-primary tracking-wider">
+                    InvoiceFy
+                  </h1>
                 </div>
               </div>
             </div>
-            <div className="">
-              <h1 className="text-2xl text-right font-semibold uppercase tracking-wider mt-1">
-                INVOICE
-              </h1>
-              {data ? (
-                <div className="flex flex-col gap-y-2 mt-10">
-                  <div className="flex items-center gap-3">
-                    <span className="font-medium">Bill To:</span>
-                    <h1 className="text-left">{data.clientName}</h1>
-                  </div>{" "}
-                  <div className="flex items-center gap-3">
-                    <span className="font-medium">Invoice Number:</span>
-                    <h1 className="">
-                      #{getShortId(data?._id! || "00000000")}
-                    </h1>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-medium">Invoice Date:</span>
-                    <h1 className="">
-                      {data.invoiceDate?.toString().slice(0, 10)}
-                    </h1>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <Skeleton className="w-40 h-8 mt-10" />
-                </>
-              )}
+            <div className="mt-5">
+              <StatusBadge />
             </div>
           </div>
           <div className="py-2">

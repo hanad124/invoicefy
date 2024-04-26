@@ -1,6 +1,6 @@
 # Invoicefy - A simple invoice generator
 
-Invoicefy is a simple invoice generator that allows you to create and download invoices in PDF format. It is built using `Mern stack`.
+Invoicefy is a web-based application that allows users to create and download invoices in PDF format. Users can also view all invoices, track the status of invoices, and manage their profile and settings. The application is built using React,Typescript, Node.js, Express, and MongoDB. The frontend is built using React and Zustand for state management, while the backend is built using Node.js and Express. MongoDB is used as the database, and Firebase is used for image storage. The application also uses shadcn ui for the design.
 
 ![Portfolio Preview](./client/public/Thumbnail.svg)
 
