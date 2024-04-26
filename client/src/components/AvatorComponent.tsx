@@ -106,7 +106,7 @@ const AvatorComponent = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  onClick={() => navigate("/updateEmail")}
+                  onClick={() => navigate("/settings")}
                   className="flex gap-1 cursor-pointer items-center text-slate-600 dark:text-slate-400"
                 >
                   <FiSettings className="w-6 font-bold text-lg" />
