@@ -2,9 +2,9 @@ import { Dialog, DialogContent } from "../../../ui/dialog";
 import {
   openViewInvoiceModal,
   useSessionToken,
+  useUserInfo,
 } from "../../../../store/invoice";
 import { useEffect } from "react";
-import logo from "../../../../../public/logo.svg";
 import getShortId from "../../../../helpers/getShortId";
 import {
   useInvoices,
@@ -21,6 +21,7 @@ const ViewInvoiceModel = () => {
   const { data, fetchInvoice } = useInvoiceById();
   const { fetchData } = useInvoices();
   const { sessionToken } = useSessionToken();
+  const { user } = useUserInfo();
 
   useEffect(() => {
     if (id) {
@@ -78,7 +79,7 @@ const ViewInvoiceModel = () => {
               <div className="">
                 <div className="flex items-center gap-3">
                   <img
-                    src={sessionToken?.companyLogo}
+                    src={user?.companyLogo}
                     alt="logo"
                     className="w-[3rem] h-[3rem]"
                   />
